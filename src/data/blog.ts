@@ -6,6 +6,9 @@ export const getBlogByUrl = async (url: string) => {
       where: {
         url,
       },
+      include: {
+        user: true,
+      },
     });
   } catch (error) {
     return null;
