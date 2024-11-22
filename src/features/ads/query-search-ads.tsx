@@ -61,7 +61,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       <div className="w-full">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
-        <div class="gcse-searchresults-only"></div>
+        <div className="gcse-searchresults-only"></div>
         <div id="afscontainer3"></div>
       </div>
     </ClientWrapper>
