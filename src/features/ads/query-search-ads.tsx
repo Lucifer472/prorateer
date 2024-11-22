@@ -11,6 +11,25 @@ import RelatedSearchAds from "./related-search-ads";
 const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
 
+  function initializeGoogleCustomSearch() {
+    google.search.cse.element.render({
+      gname: "searchInstance",
+      div: "results",
+      tag: "search",
+      attributes: { linkTarget: "" },
+    });
+  }
+  function myWebResultsRenderedCallback() {
+    const ele = google.search.cse.element.getElement("searchInstance");
+    if (ele) {
+      ele.execute(q);
+    }
+  }
+  window.__gcse = {
+    parsetags: "explicit",
+    initializationCallback: initializeGoogleCustomSearch,
+  };
+
   useEffect(() => {
     var pageOptions = {
       pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
@@ -19,6 +38,10 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       adsafe: "high",
       resultsPageBaseUrl: `${SITE_URL}/dsrw`, // Enter the base URL for your results page
       resultsPageQueryParam: "q", // (Default to 'q') Matches the param denoting the query on the search page
+    };
+    var rsblock1 = {
+      container: "relatedsearches1",
+      relatedSearches: 6,
     };
 
     var adblock1 = {
@@ -42,33 +65,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         (g[o]["t"] = 1 * new Date());
     })(window, "_googCsa");
 
-    _googCsa("ads", pageOptions, adblock1, adblock2, adblock3);
-
-    function initializeGoogleCustomSearch() {
-      google.search.cse.element.render({
-        gname: "searchInstance",
-        div: "results",
-        tag: "search",
-        attributes: { linkTarget: "" },
-      });
-    }
-    function myWebResultsRenderedCallback() {
-      const ele = google.search.cse.element.getElement("searchInstance");
-      if (ele) {
-        ele.execute(q);
-      }
-    }
-    window.__gcse = {
-      parsetags: "explicit",
-      initializationCallback: initializeGoogleCustomSearch,
-      searchCallbacks: {
-        web: {
-          starting: myWebResultsRenderedCallback,
-          ready: myWebResultsRenderedCallback,
-          rendered: myWebResultsRenderedCallback,
-        },
-      },
-    };
+    _googCsa("ads", pageOptions, adblock1, adblock2, adblock3, rsblock1);
   }, [pathname, q]);
 
   return (
@@ -78,6 +75,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         <div id="afscontainer2"></div>
         <div id="results"></div>
         <div id="afscontainer3"></div>
+        <div id="relatedsearches1"></div>
         <RelatedSearchAds />
       </div>
     </ClientWrapper>
