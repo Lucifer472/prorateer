@@ -12,7 +12,6 @@ const RelatedSearchAds = () => {
   useEffect(() => {
     var pageOptions = {
       pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
-      query: q, // Make sure that the correct query is placed here!
       styleId: "4122597845",
       adsafe: "high",
       resultsPageBaseUrl: `${SITE_URL}/dsrw`, // Enter the base URL for your results page

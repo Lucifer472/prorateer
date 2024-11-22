@@ -80,7 +80,6 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         <div id="afscontainer2"></div>
         <div id="results"></div>
         <div id="afscontainer3"></div>
-        <RelatedSearchAds />
       </div>
     </ClientWrapper>
   );
