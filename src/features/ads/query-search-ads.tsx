@@ -49,7 +49,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       <div className="w-full">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
-        <div class="gcse-searchbox-only" data-queryParameterName="q"></div>
+        <div class="gcse-searchresults-only" data-queryParameterName="q"></div>
         <div id="afscontainer3"></div>
       </div>
     </ClientWrapper>
