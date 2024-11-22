@@ -42,6 +42,18 @@ const QuerySearchAds = ({ q }: { q: string }) => {
     })(window, "_googCsa");
 
     _googCsa("ads", pageOptions, adblock1, adblock2, adblock3);
+
+    window.__gcse = {
+      parsetags: "explicit",
+      initializationCallback: function () {
+        const searchBox = google.search.cse.element.getElement(
+          "gcse-searchresults-only"
+        );
+        if (searchBox) {
+          searchBox.execute(q);
+        }
+      },
+    };
   }, [pathname, q]);
 
   return (
@@ -49,7 +61,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       <div className="w-full">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
-        <div class="gcse-searchresults-only" data-queryParameterName="q"></div>
+        <div class="gcse-searchresults-only"></div>
         <div id="afscontainer3"></div>
       </div>
     </ClientWrapper>
