@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import ClientWrapper from "@/components/client-wrapper";
 import { SITE_URL } from "@/constant";
 
-const RelatedSearchAds = () => {
+const RelatedSearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const RelatedSearchAds = () => {
       pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
       styleId: "4122597845",
       adsafe: "high",
+      query: q,
       resultsPageBaseUrl: `${SITE_URL}/dsrw`, // Enter the base URL for your results page
       resultsPageQueryParam: "q", // (Default to 'q') Matches the param denoting the query on the search page
     };
@@ -33,7 +34,7 @@ const RelatedSearchAds = () => {
     })(window, "_googCsa");
 
     _googCsa("ads", pageOptions, rsblock1);
-  }, [pathname]);
+  }, [pathname, q]);
 
   return (
     <ClientWrapper>

@@ -3,7 +3,13 @@ import dynamic from "next/dynamic";
 
 import { BlogContent } from "@/types";
 
-export const BlogFormatter = ({ content }: { content: BlogContent }) => {
+export const BlogFormatter = ({
+  content,
+  url,
+}: {
+  content: BlogContent;
+  url: string;
+}) => {
   const RelatedSearchAds = dynamic(
     () => import("@/features/ads/related-search-ads"),
     {
@@ -115,7 +121,7 @@ export const BlogFormatter = ({ content }: { content: BlogContent }) => {
               );
             }
           case "ad":
-            return <b.data key={index} />;
+            return <b.data q={url} key={index} />;
           default:
             return null;
         }

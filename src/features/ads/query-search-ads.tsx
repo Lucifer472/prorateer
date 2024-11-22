@@ -12,34 +12,6 @@ const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.innerHTML = `  function initializeGoogleCustomSearch() {
-      google.search.cse.element.render({
-        gname: "searchInstance",
-        div: "results",
-        tag: "search",
-        attributes: { linkTarget: "" },
-      });
-      const ele = google.search.cse.element.getElement("searchInstance");
-      if (ele) {
-        ele.execute('loan');
-      }
-    }
-    window.__gcse = {
-      parsetags: "explicit",
-      initializationCallback: initializeGoogleCustomSearch,
-    };`;
-
-    // Append the script to the body
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script if needed
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
     var pageOptions = {
       pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
       query: q, // Make sure that the correct query is placed here!
