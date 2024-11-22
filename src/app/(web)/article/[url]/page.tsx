@@ -37,7 +37,7 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
             {TimeToRead(content.blocks.length)}
           </span>
         </div>
-        <article>
+        <article className="w-full">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-900">
             {article.title}
           </h1>

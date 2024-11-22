@@ -32,7 +32,6 @@ export default function RootLayout({
         async
         src="https://cse.google.com/cse.js?cx=142fbffd1b55a478f"
       />
-
       <body className={cn(inter.className)}>
         <Toaster />
         {children}
