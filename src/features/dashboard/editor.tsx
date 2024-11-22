@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { toast } from "sonner";
 
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import EditorjsList from "@editorjs/list";
 import ImageTool from "@editorjs/image";
-import { toast } from "sonner";
 
 const Editor = ({
   initialData,
@@ -59,7 +59,7 @@ const Editor = ({
         editorRef.current = null;
       }
     };
-  }, []);
+  }, [setData]);
 
   return (
     <div className="space-y-2 px-2">

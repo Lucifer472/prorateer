@@ -3,46 +3,25 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { toast } from "sonner";
-import { usePathname, useRouter } from "next/navigation";
-import { ChevronDown, Menu, SearchIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu } from "lucide-react";
 import { IoIosClose } from "react-icons/io";
 
 import { blogCategory } from "@/constant";
 
 import { cn } from "@/lib/utils";
 
+import SearchForm from "../ads/search-form";
+import Logo from "@/components/Logo";
+
 export const WebNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [logo, setLogo] = useState("/logo.png");
 
   const pathname = usePathname();
 
-  const router = useRouter();
-
   useEffect(() => {
-    const width = window.innerWidth;
-
-    if (width < 768) {
-      setLogo("/logo-mobile.png");
-    }
-
     setIsOpen(false);
   }, [pathname]);
-
-  const formSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
-    const value = formData.get("search-form");
-
-    if (value && typeof value === "string") {
-      router.push("/dsrw?q=" + encodeURIComponent(value));
-    } else {
-      toast.error("Please Input a valid Value");
-    }
-  };
 
   return (
     <header
@@ -51,14 +30,7 @@ export const WebNavigation = () => {
     >
       <nav className="h-fit w-full border-b border-neutral-50 shadow relative z-50 bg-white px-4 xl:px-1">
         <div className="flex items-center justify-between gap-x-4 max-w-screen-xl h-[70px] mx-auto">
-          <Link href={"/"} className="relative w-[32px] md:w-[132px] h-[43px]">
-            <Image
-              src={logo}
-              alt="Logo"
-              fill
-              style={{ objectFit: "contain" }}
-            />
-          </Link>
+          <Logo />
           <ul className="hidden md:flex items-center justify-center gap-x-4">
             {blogCategory.slice(0, 5).map((c) => (
               <li key={c.value} className="hidden lg:block">
@@ -85,22 +57,7 @@ export const WebNavigation = () => {
               </button>
             </li>
           </ul>
-          <form
-            onSubmit={formSearch}
-            className="relative md:max-w-[270px] w-full flex flex-row-reverse md:items-center shadow md:justify-center border border-neutral-100 rounded-sm"
-          >
-            <button
-              type="submit"
-              className="h-[40px] px-2 hover:bg-brand-primary flex items-center justify-center text-brand-primary hover:text-white rounded-r-sm"
-            >
-              <SearchIcon className="size-[20px]" />
-            </button>
-            <input
-              type="text"
-              name="search-form"
-              className="outline-none px-2 h-[40px] md:max-w-[230px] w-full"
-            />
-          </form>
+          <SearchForm />
           <div
             className="size-[40px] flex md:hidden items-center justify-center"
             onClick={() => setIsOpen((prev) => !prev)}

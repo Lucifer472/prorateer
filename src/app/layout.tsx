@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "sonner";
+
+import { Inter } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
@@ -20,6 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script
+        id="Google-Search-ads"
+        async
+        src="https://www.google.com/adsense/search/ads.js"
+      />
       <body className={cn(inter.className)}>
         <Toaster />
         {children}

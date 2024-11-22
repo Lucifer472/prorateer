@@ -93,7 +93,7 @@
   .blog-styles p {
     @apply text-base sm:text-lg;
     color: #1d2849;
-    font-weight: 400;
+    font-weight: 300;
     margin: 0.5em 0;
     text-align: justify;
   }

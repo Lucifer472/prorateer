@@ -1,3 +1,5 @@
+import BackToTop from "@/components/back-to-top";
+
 import { Footer } from "@/features/web/footer";
 import { WebNavigation } from "@/features/web/navigation";
 
@@ -8,6 +10,7 @@ const WebLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="max-w-screen-xl mx-auto w-full mb-4 mt-[86px]">
         {children}
       </div>
+      <BackToTop />
       <Footer />
     </div>
   );

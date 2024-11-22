@@ -27,13 +27,13 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
     <main className="w-full flex flex-col lg:grid lg:grid-cols-4">
       <div className="col-span-3 w-full space-y-2 px-2">
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-center gap-x-1">
+          <div className="flex items-center justify-center font-light gap-x-1">
             <IoMdHome className="size-[16px]" />{" "}
-            <span className="text-xs font-normal text-neutral-600">
+            <span className="text-xs  text-neutral-600">
               Published on {LocalDate(article.createdAt)}
             </span>
           </div>
-          <span className="text-xs font-normal text-neutral-600">
+          <span className="text-xs  text-neutral-600">
             {TimeToRead(content.blocks.length)}
           </span>
         </div>

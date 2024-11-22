@@ -1,7 +1,22 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import { BlogContent } from "@/types";
 
 export const BlogFormatter = ({ content }: { content: BlogContent }) => {
+  const RelatedSearchAds = dynamic(
+    () => import("@/features/ads/related-search-ads"),
+    {
+      ssr: false,
+    }
+  );
+
+  content.blocks.splice(2, 0, {
+    id: "google-search-ads",
+    type: "ad",
+    data: RelatedSearchAds,
+  });
+
   return (
     <div className="prose w-full max-w-full sm:max-w-[95%] blog-styles my-6">
       {content.blocks.map((b: any, index) => {
@@ -99,6 +114,8 @@ export const BlogFormatter = ({ content }: { content: BlogContent }) => {
                 </ol>
               );
             }
+          case "ad":
+            return <b.data key={index} />;
           default:
             return null;
         }

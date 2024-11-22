@@ -18,16 +18,16 @@ export function LocalDate(date: Date) {
 export function TimeToRead(len: number) {
   switch (true) {
     case len < 5:
-      return "Less than a minute read";
+      return "Less than a min read";
     case len < 10:
-      return "1 minute read";
+      return "1 min read";
     case len < 20:
-      return "5 minute read";
+      return "5 min read";
     case len < 30:
-      return "10 minute read";
+      return "10 min read";
     case len < 50:
-      return "20 minute read";
+      return "20 min read";
     default:
-      return "30+ minute read";
+      return "30+ min read";
   }
 }
