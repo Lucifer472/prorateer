@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import ClientWrapper from "@/components/client-wrapper";
 import { SITE_URL } from "@/constant";
+import RelatedSearchAds from "./related-search-ads";
 
 const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
@@ -50,7 +51,8 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         tag: "search",
         attributes: { linkTarget: "" },
       });
-
+    }
+    function myWebResultsRenderedCallback() {
       const ele = google.search.cse.element.getElement("searchInstance");
       if (ele) {
         ele.execute(q);
@@ -59,6 +61,13 @@ const QuerySearchAds = ({ q }: { q: string }) => {
     window.__gcse = {
       parsetags: "explicit",
       initializationCallback: initializeGoogleCustomSearch,
+      searchCallbacks: {
+        web: {
+          starting: myWebResultsRenderedCallback,
+          ready: myWebResultsRenderedCallback,
+          rendered: myWebResultsRenderedCallback,
+        },
+      },
     };
   }, [pathname, q]);
 
@@ -69,6 +78,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         <div id="afscontainer2"></div>
         <div id="results"></div>
         <div id="afscontainer3"></div>
+        <RelatedSearchAds />
       </div>
     </ClientWrapper>
   );
