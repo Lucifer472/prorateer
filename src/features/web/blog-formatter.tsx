@@ -17,10 +17,17 @@ export const BlogFormatter = ({
     }
   );
 
+  const QuerySearchAds = dynamic(
+    () => import("@/features/ads/query-search-ads"),
+    {
+      ssr: false,
+    }
+  );
+
   content.blocks.splice(2, 0, {
     id: "google-search-ads",
     type: "ad",
-    data: RelatedSearchAds,
+    data: QuerySearchAds,
   });
 
   return (
