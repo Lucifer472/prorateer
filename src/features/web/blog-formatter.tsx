@@ -4,22 +4,9 @@ import dynamic from "next/dynamic";
 
 import { BlogContent } from "@/types";
 
-export const BlogFormatter = ({
-  content,
-  url,
-}: {
-  content: BlogContent;
-  url: string;
-}) => {
+export const BlogFormatter = ({ content }: { content: BlogContent }) => {
   const RelatedSearchAds = dynamic(
     () => import("@/features/ads/related-search-ads"),
-    {
-      ssr: false,
-    }
-  );
-
-  const QuerySearchAds = dynamic(
-    () => import("@/features/ads/query-search-ads"),
     {
       ssr: false,
     }
@@ -28,7 +15,7 @@ export const BlogFormatter = ({
   content.blocks.splice(2, 0, {
     id: "google-search-ads",
     type: "ad",
-    data: QuerySearchAds,
+    data: RelatedSearchAds,
   });
 
   return (
@@ -129,7 +116,7 @@ export const BlogFormatter = ({
               );
             }
           case "ad":
-            return <b.data q={url} key={index} />;
+            return <b.data key={index} />;
           default:
             return null;
         }

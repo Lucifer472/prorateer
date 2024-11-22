@@ -41,7 +41,7 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
           <h1 className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-900">
             {article.title}
           </h1>
-          <BlogFormatter url={article.url} content={content} />
+          <BlogFormatter content={content} />
         </article>
         <div className="w-full flex items-center justify-center flex-col gap-y-4">
           <div className="size-[100px] relative rounded-md">
