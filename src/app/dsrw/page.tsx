@@ -15,7 +15,7 @@ const Dsrw = ({ searchParams }: { searchParams: { q: string } }) => {
   return (
     <div className="w-full">
       <main className="my-6 px-4 sm:px-2 md:px-0 max-w-screen-md mx-auto relative">
-        <div className="fixed top-2 right-4">
+        <div className="hidden lg:block lg:fixed top-2 right-4">
           <Logo />
         </div>
         <QuerySearchAds q={q} />

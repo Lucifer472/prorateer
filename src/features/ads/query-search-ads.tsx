@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import ClientWrapper from "@/components/client-wrapper";
+import { SITE_URL } from "@/constant";
 
 const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
@@ -15,7 +16,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       query: q, // Make sure that the correct query is placed here!
       styleId: "4122597845",
       adsafe: "high",
-      resultsPageBaseUrl: "https://hellogandhinagar.com/dsrw", // Enter the base URL for your results page
+      resultsPageBaseUrl: `${SITE_URL}/dsrw`, // Enter the base URL for your results page
       resultsPageQueryParam: "q", // (Default to 'q') Matches the param denoting the query on the search page
     };
 
@@ -31,11 +32,6 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       container: "afscontainer3",
     };
 
-    var rsblock1 = {
-      container: "relatedsearches1",
-      relatedSearches: 10,
-    };
-
     (function (g, o) {
       (g[o] =
         g[o] ||
@@ -45,7 +41,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
         (g[o]["t"] = 1 * new Date());
     })(window, "_googCsa");
 
-    _googCsa("ads", pageOptions, adblock1, adblock2, adblock3, rsblock1);
+    _googCsa("ads", pageOptions, adblock1, adblock2, adblock3);
   }, [pathname, q]);
 
   return (
@@ -53,8 +49,8 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       <div className="w-full">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
+        <div class="gcse-searchbox-only" data-queryParameterName="q"></div>
         <div id="afscontainer3"></div>
-        <div id="relatedsearches1"></div>
       </div>
     </ClientWrapper>
   );
