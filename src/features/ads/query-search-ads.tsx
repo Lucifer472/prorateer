@@ -43,16 +43,19 @@ const QuerySearchAds = ({ q }: { q: string }) => {
 
     _googCsa("ads", pageOptions, adblock1, adblock2, adblock3);
 
+    function initializeGoogleCustomSearch() {
+      google.search.cse.element.render({
+        gname: "searchInstance1",
+        div: "results",
+        tag: "search",
+        attributes: { linkTarget: "" },
+      });
+
+      google.search.cse.element.getElement("searchInstance1").execute(q);
+    }
     window.__gcse = {
       parsetags: "explicit",
-      initializationCallback: function () {
-        const searchBox = google.search.cse.element.getElement(
-          "gcse-searchresults-only"
-        );
-        if (searchBox) {
-          searchBox.execute(q);
-        }
-      },
+      initializationCallback: initializeGoogleCustomSearch,
     };
   }, [pathname, q]);
 
@@ -61,7 +64,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       <div className="w-full">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
-        <div className="gcse-searchresults-only"></div>
+        <div id="results"></div>
         <div id="afscontainer3"></div>
       </div>
     </ClientWrapper>

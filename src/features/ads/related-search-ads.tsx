@@ -37,7 +37,12 @@ const RelatedSearchAds = () => {
 
   return (
     <ClientWrapper>
-      <div id="relatedsearches1"></div>
+      <div className="my-2">
+        <div
+          id="relatedsearches1"
+          style={{ width: "100%", minHeight: "500px" }}
+        ></div>
+      </div>
     </ClientWrapper>
   );
 };
