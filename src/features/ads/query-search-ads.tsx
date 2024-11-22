@@ -45,13 +45,16 @@ const QuerySearchAds = ({ q }: { q: string }) => {
 
     function initializeGoogleCustomSearch() {
       google.search.cse.element.render({
-        gname: "searchInstance1",
+        gname: "searchInstance",
         div: "results",
         tag: "search",
         attributes: { linkTarget: "" },
       });
 
-      google.search.cse.element.getElement("searchInstance1").execute(q);
+      const ele = google.search.cse.element.getElement("searchInstance");
+      if (ele) {
+        ele.execute(q);
+      }
     }
     window.__gcse = {
       parsetags: "explicit",
