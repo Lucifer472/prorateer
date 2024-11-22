@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 
 import ClientWrapper from "@/components/client-wrapper";
 import { SITE_URL } from "@/constant";
-import RelatedSearchAds from "./related-search-ads";
 
 const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
@@ -46,14 +45,12 @@ const QuerySearchAds = ({ q }: { q: string }) => {
   }, [pathname, q]);
 
   return (
-    <ClientWrapper>
-      <div className="w-full min-h-[1000px]">
-        <div id="afscontainer1"></div>
-        <div id="afscontainer2"></div>
-        <div class="gcse-searchresults-only"></div>
-        <div id="afscontainer3"></div>
-      </div>
-    </ClientWrapper>
+    <div className="w-full my-6">
+      <div id="afscontainer1"></div>
+      <div id="afscontainer2"></div>
+      <div class="gcse-searchresults-only"></div>
+      <div id="afscontainer3"></div>
+    </div>
   );
 };
 
