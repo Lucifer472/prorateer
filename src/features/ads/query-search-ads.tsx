@@ -47,7 +47,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
 
   return (
     <ClientWrapper>
-      <div className="w-full">
+      <div className="w-full min-h-[1000px]">
         <div id="afscontainer1"></div>
         <div id="afscontainer2"></div>
         <div id="results"></div>
