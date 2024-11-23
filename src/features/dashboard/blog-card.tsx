@@ -33,8 +33,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
-import ClientWrapper from "@/components/client-wrapper";
-
 import { blogCategory } from "@/constant";
 
 import { BlogSchema } from "./schema";
@@ -168,9 +166,7 @@ export const BlogCard = () => {
                   </FormItem>
                 )}
               />
-              <ClientWrapper>
-                <Editor setData={setContent} />
-              </ClientWrapper>
+              <Editor setData={setContent} />
             </div>
             <Button variant={"primary"} size={"lg"} disabled={isPending}>
               Add Blog

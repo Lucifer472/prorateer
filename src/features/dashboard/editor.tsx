@@ -18,41 +18,39 @@ const Editor = ({
   const editorRef = useRef<EditorJS | null>(null);
 
   useEffect(() => {
-    if (!editorRef.current) {
-      editorRef.current = new EditorJS({
-        holder: "editorjs",
-        tools: {
-          header: Header,
-          list: {
-            class: EditorjsList as any,
-            inlineToolbar: true,
-            config: {
-              defaultStyle: "unordered",
-            },
+    editorRef.current = new EditorJS({
+      holder: "editorjs",
+      tools: {
+        header: Header,
+        list: {
+          class: EditorjsList as any,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: "unordered",
           },
-          image: {
-            class: ImageTool,
-            config: {
-              endpoints: {
-                byFile: "https://images.drivingexamexpert.com/upload/blog.php", // Your backend file uploader endpoint
-              },
+        },
+        image: {
+          class: ImageTool,
+          config: {
+            endpoints: {
+              byFile: "https://images.drivingexamexpert.com/upload/blog.php", // Your backend file uploader endpoint
             },
           },
         },
-        placeholder: "Let`s write an awesome Blogs!",
-        onChange: async () => {
-          if (editorRef.current) {
-            try {
-              const outputData = await editorRef.current.save();
-              setData(outputData); // Update state with the latest content
-            } catch (error) {
-              console.log(error);
-              toast.error("Failed to save editor data");
-            }
+      },
+      placeholder: "Let`s write an awesome Blogs!",
+      onChange: async () => {
+        if (editorRef.current) {
+          try {
+            const outputData = await editorRef.current.save();
+            setData(outputData); // Update state with the latest content
+          } catch (error) {
+            console.log(error);
+            toast.error("Failed to save editor data");
           }
-        },
-      });
-    }
+        }
+      },
+    });
 
     return () => {
       if (editorRef.current) {
