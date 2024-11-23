@@ -40,3 +40,30 @@ export const getAllArticles = async () => {
     return null;
   }
 };
+
+export const getPopularArticles = async () => {
+  try {
+    return await db.blogs.findMany({
+      take: 6,
+      orderBy: {
+        views: "desc",
+      },
+    });
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getTopStories = async () => {
+  try {
+    return await db.blogs.findMany({
+      skip: 6,
+      take: 6,
+      orderBy: {
+        views: "desc",
+      },
+    });
+  } catch (error) {
+    return null;
+  }
+};

@@ -31,7 +31,7 @@ const BackToTop = () => {
   return (
     <button
       onClick={handleScrollToTop}
-      className="fixed bottom-24 right-0 z-[5] size-[40px] bg-slate-50 rounded-l-md cursor-pointer flex items-center justify-center shadow-lg border border-gray-300"
+      className="fixed flex md:hidden bottom-24 right-0 z-[5] size-[40px] bg-slate-50 rounded-l-md cursor-pointer  items-center justify-center shadow-lg border border-gray-300"
     >
       <ArrowUpIcon />
     </button>

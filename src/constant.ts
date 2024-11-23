@@ -29,7 +29,7 @@ export const footerLinks = [
   },
   {
     label: "About Us",
-    link: "/about-us",
+    link: "/about",
   },
   {
     label: "Disclaimer",

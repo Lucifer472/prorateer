@@ -6,12 +6,14 @@ import { Inter } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
+import CookieBanner from "@/components/cookie-banner";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Prorateer",
+  title: "Search Hello Gandhinagar",
   description: "Google Authorized Ads Search",
 };
 
@@ -35,6 +37,7 @@ export default function RootLayout({
       <body className={cn(inter.className)}>
         <Toaster />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

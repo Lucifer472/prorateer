@@ -62,7 +62,6 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
           <div className="flex items-center justify-center gap-x-2">
             <Link
               className="flex items-center justify-center size-[32px] bg-neutral-100 rounded-sm"
-              target="_blank"
               rel="nofollow noopener noreferrer"
               href={
                 "https://www.facebook.com/sharer.php?u=" +
@@ -73,7 +72,6 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
             </Link>
             <Link
               className="flex items-center justify-center size-[32px] bg-neutral-100 rounded-sm"
-              target="_blank"
               rel="nofollow noopener noreferrer"
               href={
                 "https://twitter.com/intent/tweet?url=" +
@@ -84,7 +82,6 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
             </Link>
             <Link
               className="flex items-center justify-center size-[32px] bg-neutral-100 rounded-sm"
-              target="_blank"
               rel="nofollow noopener noreferrer"
               href={
                 "https://api.whatsapp.com/send?text=" +
@@ -95,7 +92,6 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
             </Link>
             <Link
               className="flex items-center justify-center size-[32px] bg-neutral-100 rounded-sm"
-              target="_blank"
               rel="nofollow noopener noreferrer"
               href={
                 "mailto:?subject=" +
