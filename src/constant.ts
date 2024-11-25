@@ -24,7 +24,7 @@ export const adminNav = [
 
 export const footerLinks = [
   {
-    label: "© 2024 Copyright Prorateer",
+    label: "© 2024 Copyright Truepub Media",
     link: "/copyright",
   },
   {

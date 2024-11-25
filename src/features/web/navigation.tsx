@@ -35,7 +35,7 @@ export const WebNavigation = () => {
             {blogCategory.slice(0, 5).map((c) => (
               <li key={c.value} className="hidden lg:block">
                 <Link
-                  href={"/" + c.value}
+                  href={"/c/" + c.value}
                   className="whitespace-nowrap font-semibold hover:underline"
                 >
                   {c.label}
@@ -81,7 +81,7 @@ export const WebNavigation = () => {
             {blogCategory.slice(0, 6).map((c) => (
               <li key={c.value}>
                 <Link
-                  href={"/" + c.value}
+                  href={"/c/" + c.value}
                   className="whitespace-nowrap font-light hover:underline"
                 >
                   {c.label}
@@ -93,7 +93,7 @@ export const WebNavigation = () => {
             {blogCategory.slice(6, 12).map((c) => (
               <li key={c.value}>
                 <Link
-                  href={"/" + c.value}
+                  href={"/c/" + c.value}
                   className="whitespace-nowrap font-light hover:underline"
                 >
                   {c.label}
@@ -105,7 +105,7 @@ export const WebNavigation = () => {
             {blogCategory.slice(12, 18).map((c) => (
               <li key={c.value}>
                 <Link
-                  href={"/" + c.value}
+                  href={"/c/" + c.value}
                   className="whitespace-nowrap font-light hover:underline"
                 >
                   {c.label}
@@ -117,7 +117,7 @@ export const WebNavigation = () => {
             {blogCategory.slice(18, 24).map((c) => (
               <li key={c.value}>
                 <Link
-                  href={"/" + c.value}
+                  href={"/c/" + c.value}
                   className="whitespace-nowrap font-light hover:underline"
                 >
                   {c.label}

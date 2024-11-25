@@ -66,3 +66,19 @@ export const getTopStories = async () => {
     return null;
   }
 };
+
+export const getCategoryBlogs = async (category: string) => {
+  try {
+    return await db.blogs.findMany({
+      take: 12,
+      where: {
+        category,
+      },
+      orderBy: {
+        views: "desc",
+      },
+    });
+  } catch (error) {
+    return null;
+  }
+};
