@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { FaFacebook, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { IoIosMail, IoMdHome } from "react-icons/io";
 
@@ -20,6 +21,13 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
   if (!article) {
     return redirect("/");
   }
+
+  const RelatedSearchAds = dynamic(
+    () => import("@/features/ads/related-search-ads"),
+    {
+      ssr: false,
+    }
+  );
 
   const content = article.content as BlogContent;
 
@@ -41,6 +49,7 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
           <h1 className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-900">
             {article.title}
           </h1>
+          <RelatedSearchAds />
           <BlogFormatter content={content} />
         </article>
         <div className="w-full flex items-center justify-center flex-col gap-y-4">

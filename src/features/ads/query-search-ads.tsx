@@ -4,14 +4,13 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import ClientWrapper from "@/components/client-wrapper";
 import { SITE_URL } from "@/constant";
 
 const QuerySearchAds = ({ q }: { q: string }) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    var pageOptions = {
+    const pageOptions = {
       pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
       query: q, // Make sure that the correct query is placed here!
       styleId: "4122597845",
@@ -20,15 +19,15 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       resultsPageQueryParam: "q", // (Default to 'q') Matches the param denoting the query on the search page
     };
 
-    var adblock1 = {
+    const adblock1 = {
       container: "afscontainer1",
     };
 
-    var adblock2 = {
+    const adblock2 = {
       container: "afscontainer2",
     };
 
-    var adblock3 = {
+    const adblock3 = {
       container: "afscontainer3",
     };
 

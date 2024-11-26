@@ -1,11 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { SearchIcon } from "lucide-react";
 
 const SearchFormDSRW = () => {
   const router = useRouter();
+
+  const query = useSearchParams();
+  const search = query.get("q");
 
   const formSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,6 +36,7 @@ const SearchFormDSRW = () => {
         <SearchIcon className="size-[20px]" />
       </button>
       <input
+        defaultValue={search ?? ""}
         type="text"
         name="search-form"
         className="outline-none px-2 h-[40px] rounded-l-md w-full"

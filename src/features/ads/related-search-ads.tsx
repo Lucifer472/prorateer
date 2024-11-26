@@ -4,23 +4,21 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import ClientWrapper from "@/components/client-wrapper";
-
 import { SITE_URL } from "@/constant";
 
 const RelatedSearchAds = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    var pageOptions = {
-      pubId: "partner-pub-2471157282524836", // Make sure that this is the correct client ID!
+    const pageOptions = {
+      pubId: "partner-pub-2471157282524836",
       styleId: "4122597845",
       relatedSearchTargeting: "content",
-      resultsPageBaseUrl: `${SITE_URL}/dsrw`, // Enter the base URL for your results page
-      resultsPageQueryParam: "q", // (Default to 'q') Matches the param denoting the query on the search page
+      resultsPageBaseUrl: `${SITE_URL}/dsrw`,
+      resultsPageQueryParam: "q",
     };
 
-    var rsblock1 = {
+    const rsblock1 = {
       container: "relatedsearches1",
       relatedSearches: 6,
     };
