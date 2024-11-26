@@ -16,7 +16,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full">
       <Navigation email={email} user={user} />
-      {children}
+      <div className="max-w-screen-lg mx-auto">{children}</div>
     </div>
   );
 };

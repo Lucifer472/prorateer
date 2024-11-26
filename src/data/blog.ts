@@ -82,3 +82,28 @@ export const getCategoryBlogs = async (category: string) => {
     return null;
   }
 };
+
+export const getAllBlogs = async (search?: string) => {
+  try {
+    return await db.blogs.findMany({
+      take: 100,
+      orderBy: {
+        updatedAt: "desc",
+      },
+      where: search
+        ? {
+            OR: [
+              { title: { contains: search } },
+              { url: { contains: search } },
+            ],
+          }
+        : undefined,
+      select: {
+        title: true,
+        url: true,
+      },
+    });
+  } catch {
+    return null;
+  }
+};

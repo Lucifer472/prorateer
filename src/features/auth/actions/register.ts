@@ -40,9 +40,7 @@ export const register = async (v: z.infer<typeof RegisterSchema>) => {
     });
 
     return { success: "Registered In" };
-  } catch (error) {
-    console.log(error);
-
+  } catch {
     return { error: "Something went wrong!" };
   }
 };

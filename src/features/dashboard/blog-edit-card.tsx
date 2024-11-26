@@ -36,11 +36,12 @@ import { Separator } from "@/components/ui/separator";
 import { blogCategory } from "@/constant";
 
 import { BlogSchema } from "./schema";
-import { addBlog } from "./actions/blog";
+import { updateBlog } from "./actions/blog";
+import { Blogs } from "@prisma/client";
 
 const Editor = dynamic(() => import("./editor"), { ssr: false });
 
-export const BlogCard = () => {
+export const BlogEditCard = ({ data }: { data: Blogs }) => {
   const [content, setContent] = useState<any>(null);
 
   const [isPending, startTransition] = useTransition();
@@ -48,10 +49,10 @@ export const BlogCard = () => {
   const form = useForm<z.infer<typeof BlogSchema>>({
     resolver: zodResolver(BlogSchema),
     defaultValues: {
-      category: "health",
-      description: "",
-      keywords: "",
-      title: "",
+      category: data.category,
+      description: data.description ? data.description : "",
+      keywords: data.keywords ? data.keywords : "",
+      title: data.title,
     },
   });
 
@@ -62,7 +63,7 @@ export const BlogCard = () => {
       return;
     }
     startTransition(() => {
-      addBlog(v, content as any).then((res) => {
+      updateBlog(v, content as any, data.url).then((res) => {
         if (res.error) {
           toast.error(res.error);
         }
@@ -80,8 +81,8 @@ export const BlogCard = () => {
   return (
     <Card className="w-full my-6 px-2">
       <CardHeader>
-        <CardTitle>Add New Blog</CardTitle>
-        <CardDescription>Use this Form to add new Blogs</CardDescription>
+        <CardTitle>Edit Blog</CardTitle>
+        <CardDescription>Use this Form to Edit Blogs</CardDescription>
       </CardHeader>
       <Separator className="mb-4" />
       <CardContent>
@@ -166,10 +167,10 @@ export const BlogCard = () => {
                   </FormItem>
                 )}
               />
-              <Editor setData={setContent} />
+              <Editor setData={setContent} initialData={data.content as any} />
             </div>
-            <Button variant={"primary"} size={"lg"} disabled={isPending}>
-              Add Blog
+            <Button variant={"default"} size={"lg"} disabled={isPending}>
+              Update Blog
             </Button>
           </form>
         </Form>

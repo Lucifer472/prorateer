@@ -7,12 +7,13 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import EditorjsList from "@editorjs/list";
 import ImageTool from "@editorjs/image";
+import { BlogContent } from "@/types";
 
 const Editor = ({
   initialData,
   setData,
 }: {
-  initialData?: string;
+  initialData?: BlogContent;
   setData: (v: any) => void;
 }) => {
   const editorRef = useRef<EditorJS | null>(null);
@@ -38,14 +39,14 @@ const Editor = ({
           },
         },
       },
+      data: initialData,
       placeholder: "Let`s write an awesome Blogs!",
       onChange: async () => {
         if (editorRef.current) {
           try {
             const outputData = await editorRef.current.save();
             setData(outputData); // Update state with the latest content
-          } catch (error) {
-            console.log(error);
+          } catch {
             toast.error("Failed to save editor data");
           }
         }
@@ -57,7 +58,7 @@ const Editor = ({
         editorRef.current = null;
       }
     };
-  }, [setData]);
+  }, [setData, initialData]);
 
   return (
     <div className="space-y-2 px-2">

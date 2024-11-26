@@ -29,8 +29,7 @@ export const updateImage = async (email: string, image: string) => {
         image,
       },
     });
-  } catch (error) {
-    console.log(error);
+  } catch {
     return null;
   }
 };

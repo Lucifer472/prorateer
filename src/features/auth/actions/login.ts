@@ -37,8 +37,7 @@ export const login = async (v: z.infer<typeof LoginSchema>) => {
     });
 
     return { success: "Logged In" };
-  } catch (error) {
-    console.log(error);
+  } catch {
     return { error: "Something went wrong!" };
   }
 };

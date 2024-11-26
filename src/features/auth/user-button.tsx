@@ -54,7 +54,6 @@ export const UserButton = ({ user, email }: { user: User; email: string }) => {
     const reader = new FileReader();
     reader.onload = () => {
       const base64String = reader.result as string;
-      console.log("Base64 String:", base64String);
 
       updateImage(email, base64String).then((res) => {
         if (res) {

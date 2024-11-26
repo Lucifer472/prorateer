@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { User } from "@prisma/client";
 
 import { UserButton } from "../auth/user-button";
+import Logo from "@/components/Logo";
 
 import { adminNav } from "@/constant";
 import { cn } from "@/lib/utils";
@@ -15,14 +15,7 @@ const Navigation = ({ user, email }: { user: User; email: string }) => {
   return (
     <nav className="w-full border-b border-neutral-50 shadow">
       <div className="flex items-center min-h-[52px] justify-between w-full max-w-screen-2xl mx-auto">
-        <Link href={"/admin"} className="relative w-[132px] h-[43px]">
-          <Image
-            src={"/logo.png"}
-            alt="Logo"
-            fill
-            style={{ objectFit: "contain" }}
-          />
-        </Link>
+        <Logo />
         <ul className="flex items-center justify-center gap-x-4">
           {adminNav.map((link) => {
             const Icon = link.icon;
