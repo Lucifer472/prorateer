@@ -7,7 +7,7 @@ const BackToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 500);
     };
 
     window.addEventListener("scroll", handleScroll);

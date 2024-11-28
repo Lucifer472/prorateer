@@ -5,4 +5,5 @@ export const BlogSchema = z.object({
   keywords: z.string().optional(),
   description: z.string().optional(),
   category: z.string(),
+  readMore: z.boolean().optional(),
 });

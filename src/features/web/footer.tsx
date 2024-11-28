@@ -1,7 +1,7 @@
-import Logo from "@/components/Logo";
-import { footerLinks } from "@/constant";
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/components/Logo";
+
+import { footerLinks } from "@/constant";
 
 export const Footer = () => {
   return (

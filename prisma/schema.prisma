@@ -75,6 +75,8 @@ model Blogs {
   category    String
   url         String  @unique
 
+  isReadMore Boolean  @default(false)
+
   views Int @default(1)
 
   createdAt DateTime @default(now())

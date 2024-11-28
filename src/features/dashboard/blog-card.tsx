@@ -34,6 +34,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 import { blogCategory } from "@/constant";
+import { cn } from "@/lib/utils";
 
 import { BlogSchema } from "./schema";
 import { addBlog } from "./actions/blog";
@@ -42,6 +43,7 @@ const Editor = dynamic(() => import("./editor"), { ssr: false });
 
 export const BlogCard = () => {
   const [content, setContent] = useState<any>(null);
+  const [isChecked, setIsChecked] = useState(false);
 
   const [isPending, startTransition] = useTransition();
 
@@ -52,8 +54,19 @@ export const BlogCard = () => {
       description: "",
       keywords: "",
       title: "",
+      readMore: isChecked,
     },
   });
+
+  const handleReadMore = () => {
+    if (form.getValues("readMore")) {
+      form.setValue("readMore", false);
+      setIsChecked(false);
+    } else {
+      form.setValue("readMore", true);
+      setIsChecked(true);
+    }
+  };
 
   const handleBlog = (v: z.infer<typeof BlogSchema>) => {
     if (!content) {
@@ -166,6 +179,20 @@ export const BlogCard = () => {
                   </FormItem>
                 )}
               />
+              <div className="flex items-center justify-start w-full gap-x-2">
+                <p>Read More :</p>
+                <button
+                  type="button"
+                  onClick={handleReadMore}
+                  className="size-4 rounded-full border-2 border-gray-500 flex items-center justify-center"
+                >
+                  <span
+                    className={cn(
+                      isChecked && "size-2 rounded-full bg-sky-500"
+                    )}
+                  ></span>
+                </button>
+              </div>
               <Editor setData={setContent} />
             </div>
             <Button variant={"primary"} size={"lg"} disabled={isPending}>

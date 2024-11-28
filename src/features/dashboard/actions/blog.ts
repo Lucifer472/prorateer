@@ -38,7 +38,8 @@ export const addBlog = async (
     return { error: "You are not Authorized" };
   }
 
-  const { title, description, category, keywords } = validatedFields.data;
+  const { title, description, category, keywords, readMore } =
+    validatedFields.data;
 
   const url = title
     .trim()
@@ -76,6 +77,7 @@ export const addBlog = async (
         keywords: !!keywords ? keywords : null,
         category,
         userId: user.id,
+        isReadMore: readMore ? readMore : false,
       },
     });
 
@@ -144,7 +146,8 @@ export const updateBlog = async (
     return { error: "You are not Authorized" };
   }
 
-  const { title, description, category, keywords } = validatedFields.data;
+  const { title, description, category, keywords, readMore } =
+    validatedFields.data;
 
   let image = "https://images.drivingexamexpert.com/blogs/6683d1444482e.png";
   for (const e of content.blocks) {
@@ -164,6 +167,7 @@ export const updateBlog = async (
         keywords: !!keywords ? keywords : null,
         category,
         userId: user.id,
+        isReadMore: readMore ? readMore : false,
       },
       where: { url },
     });
