@@ -9,12 +9,34 @@ import { cn } from "@/lib/utils";
 import CookieBanner from "@/components/cookie-banner";
 
 import "./globals.css";
+import { DESCRIPTION, KEYWORD, SITE_URL, TITLE } from "@/constant";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Search Hello Gandhinagar",
-  description: "Google Authorized Ads Search",
+  title: `${TITLE}`,
+  description: DESCRIPTION,
+  keywords: KEYWORD,
+  robots: "index follow",
+  twitter: {
+    card: "summary_large_image",
+    site: TITLE,
+    title: `${TITLE}`,
+    description: DESCRIPTION,
+  },
+  openGraph: {
+    type: "website",
+    siteName: `${TITLE}`,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    countryName: "USA",
+  },
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
+  publisher: "Truepub Media",
+  icons: "/favicon.ico",
 };
 
 export const revalidate = 0;

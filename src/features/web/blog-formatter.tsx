@@ -3,7 +3,7 @@ import { BlogContent } from "@/types";
 
 export const BlogFormatter = ({ content }: { content: BlogContent }) => {
   return (
-    <div className="prose w-full max-w-full sm:max-w-[95%] blog-styles my-6">
+    <div className="prose w-full max-w-full sm:max-w-[95%] blog-styles my-6 ">
       {content.blocks.map((b: any, index) => {
         switch (b.type) {
           case "paragraph":
@@ -82,7 +82,7 @@ export const BlogFormatter = ({ content }: { content: BlogContent }) => {
                   {b.data.items.map((list: any, listIndex: any) => (
                     <li
                       key={listIndex}
-                      dangerouslySetInnerHTML={{ __html: list }}
+                      dangerouslySetInnerHTML={{ __html: list.content }}
                     />
                   ))}
                 </ul>
@@ -93,7 +93,7 @@ export const BlogFormatter = ({ content }: { content: BlogContent }) => {
                   {b.data.items.map((list: any, listIndex: any) => (
                     <li
                       key={listIndex}
-                      dangerouslySetInnerHTML={{ __html: list }}
+                      dangerouslySetInnerHTML={{ __html: list.content }}
                     />
                   ))}
                 </ol>

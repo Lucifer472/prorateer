@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +14,45 @@ import { getBlogByUrl } from "@/data/blog";
 import { LocalDate, TimeToRead } from "@/lib/utils";
 
 import { BlogContent } from "@/types";
-import { SITE_URL } from "@/constant";
+import { SITE_URL, TITLE } from "@/constant";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { url: string };
+}): Promise<Metadata> {
+  const data = await getBlogByUrl(params.url);
+
+  if (!data) return {};
+
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: data.keywords,
+    robots: "index follow",
+    metadataBase: new URL(`${SITE_URL}/article/${data.url}`),
+    alternates: {
+      canonical: `${SITE_URL}/article/${data.url}`,
+    },
+    publisher: "Truepub Media",
+    icons: "/favicon.ico",
+    twitter: {
+      card: "summary_large_image",
+      site: TITLE,
+      title: data.title,
+      description: data.description as string,
+      images: data.image as string,
+    },
+    openGraph: {
+      type: "website",
+      siteName: `${TITLE}`,
+      description: data.description as string,
+      url: SITE_URL,
+      countryName: "USA",
+      images: data.image as string,
+    },
+  };
+}
 
 const ArticlePage = async ({ params }: { params: { url: string } }) => {
   const article = await getBlogByUrl(params.url);

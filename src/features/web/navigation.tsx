@@ -1,27 +1,18 @@
 "use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ChevronDown, Menu } from "lucide-react";
 import { IoIosClose } from "react-icons/io";
 
 import { blogCategory } from "@/constant";
-
 import { cn } from "@/lib/utils";
 
-import SearchForm from "../ads/search-form";
 import Logo from "@/components/Logo";
 
+import SearchForm from "../ads/search-form";
+import { useNavigation } from "./hooks/use-navigation";
+
 export const WebNavigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const { isOpen, setIsOpen } = useNavigation();
 
   return (
     <header
@@ -47,7 +38,7 @@ export const WebNavigation = () => {
                 onClick={() => setIsOpen((prev) => !prev)}
                 className="flex items-center justify-center font-semibold hover:underline"
               >
-                More{" "}
+                More
                 <ChevronDown
                   className={cn(
                     "transition-all duration-500",

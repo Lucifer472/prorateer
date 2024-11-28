@@ -4,6 +4,10 @@ import { TiUserAdd } from "react-icons/ti";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
 
+export const TITLE = "Search";
+export const DESCRIPTION = "Google Authorized Ads Search";
+export const KEYWORD = "Google Authorized Ads Search";
+
 export const adminNav = [
   {
     label: "Admin",
