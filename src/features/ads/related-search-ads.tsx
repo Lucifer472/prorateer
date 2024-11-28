@@ -12,7 +12,7 @@ const RelatedSearchAds = () => {
   useEffect(() => {
     const pageOptions = {
       pubId: "partner-pub-2471157282524836",
-      styleId: "4122597845",
+      styleId: "7046876531",
       relatedSearchTargeting: "content",
       resultsPageBaseUrl: `${SITE_URL}/dsrw`,
       resultsPageQueryParam: "q",
