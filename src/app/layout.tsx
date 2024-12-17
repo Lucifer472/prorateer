@@ -51,13 +51,24 @@ export default function RootLayout({
       <Script
         id="Google-Search-ads"
         async
+        type="text/javascript"
         src="https://www.google.com/adsense/search/ads.js"
       />
       <Script
         id="Google-Search-Custom-ads"
         async
+        type="text/javascript"
         src="https://cse.google.com/cse.js?cx=142fbffd1b55a478f"
+        strategy="afterInteractive"
       />
+      <Script
+        id="google-search-custom-ads-code"
+        type="text/javascript"
+        strategy="afterInteractive"
+      >
+        {`(function(g,o){g[o]=g[o]||function(){(g[o]['q']=g[o]['q']||[]).push(
+  arguments)},g[o]['t']=1*new Date})(window,'_googCsa');`}
+      </Script>
       <body className={cn(inter.className)}>
         <Toaster />
         {children}

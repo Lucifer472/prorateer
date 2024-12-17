@@ -1,19 +1,12 @@
 "use client";
 import { useState } from "react";
-import dynamic from "next/dynamic";
 import { ChevronDown } from "lucide-react";
 
 import { BlogFormatter } from "./blog-formatter";
+import RelatedSearchAds from "../ads/related-search-ads";
 
 export const Article = ({ article }: { article: any }) => {
   const [isReadMore, setReadMore] = useState(article.isReadMore);
-
-  const RelatedSearchAds = dynamic(
-    () => import("@/features/ads/related-search-ads"),
-    {
-      ssr: false,
-    }
-  );
 
   if (isReadMore) {
     const firstParagraph = article.content.blocks.find(

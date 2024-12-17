@@ -7,7 +7,6 @@ import { FaFacebook, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { IoIosMail, IoMdHome } from "react-icons/io";
 
 import { PopularArticles } from "@/features/web/popular-articles";
-import { BlogFormatter } from "@/features/web/blog-formatter";
 import { TopStories } from "@/features/web/top-stories";
 
 import { getBlogByUrl } from "@/data/blog";
@@ -61,13 +60,6 @@ const ArticlePage = async ({ params }: { params: { url: string } }) => {
   if (!article) {
     return redirect("/");
   }
-
-  const RelatedSearchAds = dynamic(
-    () => import("@/features/ads/related-search-ads"),
-    {
-      ssr: false,
-    }
-  );
 
   const content = article.content as BlogContent;
 
