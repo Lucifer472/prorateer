@@ -16,6 +16,7 @@ const QuerySearchAds = ({ q }: { q: string }) => {
       styleId: "7046876531",
       adsafe: "high",
       resultsPageBaseUrl: `${SITE_URL}/dsrw`,
+      channel: "2942078900",
       resultsPageQueryParam: "q",
     };
 
@@ -47,10 +48,6 @@ const QuerySearchAds = ({ q }: { q: string }) => {
     <div className="w-full my-6">
       <div id="afscontainer1"></div>
       <div id="afscontainer2"></div>
-      <p className="text-left w-full text-sm text-neutral-900 border-b border-neutral-300">
-        Web Result
-      </p>
-      <div class="gcse-searchresults-only"></div>
       <div id="afscontainer3"></div>
     </div>
   );

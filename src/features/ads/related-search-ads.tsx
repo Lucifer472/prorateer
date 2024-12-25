@@ -18,6 +18,7 @@ const RelatedSearchAds = () => {
       "styleId": "4122597845",
       "relatedSearchTargeting": "content",
       "resultsPageBaseUrl": "${SITE_URL}/dsrw", // Enter the base URL for your results page
+      "channel":"2942078900",
       "resultsPageQueryParam": "q" // (Default to 'q') Matches the param denoting the query on the search page
     };
 
