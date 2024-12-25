@@ -55,6 +55,29 @@ export default function RootLayout({
         src="https://www.google.com/adsense/search/ads.js"
       />
       <Script
+        id="google-tag-manager-code-2"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-11501672319"
+      />
+      <Script
+        strategy="afterInteractive"
+        id="google-tag-manager-code"
+      >{`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11501672319');
+`}</Script>
+      <Script
+        strategy="afterInteractive"
+        id="google-tag-manager-code-3"
+      >{`gtag('event', 'conversion', {
+      'send_to': 'AW-11501672319/e5LFCP_X7PsZEP-utuwq',
+      'value': 1.0,
+      'currency': 'INR'
+  });
+`}</Script>
+      <Script
         id="google-search-custom-ads-code"
         type="text/javascript"
         strategy="afterInteractive"
