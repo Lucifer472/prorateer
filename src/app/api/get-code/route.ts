@@ -2,6 +2,8 @@ import Imap from "imap";
 import { simpleParser } from "mailparser";
 import { NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 export async function GET() {
   const imap = new Imap({
     user: process.env.EMAIL_FROM!,
