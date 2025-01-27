@@ -6,8 +6,8 @@ export const revalidate = 0;
 
 export async function GET() {
   const imap = new Imap({
-    user: process.env.EMAIL_FROM!,
-    password: process.env.EMAIL_PASSWORD!,
+    user: process.env.EMAIL_FROM1!,
+    password: process.env.EMAIL_PASSWORD1!,
     host: "imap.hostinger.com",
     port: 993,
     tls: true,
